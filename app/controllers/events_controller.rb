@@ -17,6 +17,19 @@ class EventsController < ApplicationController
 	end
 	def index
 		@events = Event.all
+	end
+	def edit
+		@event = Event.find(params[:id])
+	end
+	def update
+		@event = Event.find(params[:id])
+
+		if @event.update(event_params)
+			flash.now[:notice] = "Updated!"
+		else
+			flash.now[:alert] = "Not updated!"
+			render "edit"
+		end
 		
 	end
 
