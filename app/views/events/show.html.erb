@@ -5,6 +5,8 @@
 	<p><%= @event.end_time %></p>
 	<p><%= @event.location %></p>
 	<p><%= @event.venue %></p>
-
-
 </div>
+
+<p>
+	<%= link_to "Edit event", edit_event_path(@event) %> | <%= link_to "Delete event", event_path(@event), method: :delete, data: {confirm: "Are you sure?" }%>
+</p>
