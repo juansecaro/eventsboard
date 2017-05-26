@@ -1,8 +1,8 @@
 class EventsController < ApplicationController
-	
+before_action :set_event, only: [:show, :edit, :update, :destroy]
 
 	def show
-		@event = Event.find(params[:id])
+
 	end
 	def index
 		@events = Event.all
@@ -11,7 +11,7 @@ class EventsController < ApplicationController
 		@event = Event.new
 	end
 	def create
-		@event = Event.new(event_params) 
+		@event = Event.new(event_params)
 		if @event.save
 			flash[:notice] = "Event created"
 			redirect_to @event
@@ -22,10 +22,10 @@ class EventsController < ApplicationController
 	end
 
 	def edit
-		@event = Event.find(params[:id])
+
 	end
 	def update
-		@event = Event.find(params[:id])
+
 
 		if @event.update(event_params)
 			flash.now[:notice] = "Updated!"
@@ -33,12 +33,12 @@ class EventsController < ApplicationController
 			flash.now[:alert] = "Not updated!"
 			render "edit"
 		end
-		
+
 	end
 	def destroy
-		@event = Event.find(params[:id])
+
 		@event.destroy
-		flash[:alert] = " Deleted"
+		flash.alert = " Deleted"
 		redirect_to events_url
 	end
 
@@ -48,5 +48,12 @@ class EventsController < ApplicationController
 	private
 	def event_params
 	  params.require(:event).permit(:title, :description, :start_time, :end_time, :location, :venue)
+	end
+	def set_event
+		@event = Event.find(params[:id])
+
+	rescue ActiveRecord::RecordNotFound
+		flash.alert = "The page does not exist"
+		redirect_to events_path
 	end
 end

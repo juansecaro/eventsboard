@@ -1,5 +1,7 @@
 <h1>All events</h1>
 
+<%= flash[:message] %>
+
 <p><%= link_to "Add Event", new_event_path  %></p>
 
 <% @events.each do |e| %>
