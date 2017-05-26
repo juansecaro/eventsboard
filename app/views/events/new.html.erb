@@ -1,43 +1,4 @@
 <h1>New event</h1>
 
-<% if @event.errors.any? %>
-	<div id="errors_explanation">
-		<h2><%= pluralize(@event.errors.count, "error") %> prevented this event from being saved</h2>
 
-		<ul>
-			<% @event.errors.full_messages.each do |msg| %>
-			<li>
-				<%= msg %>
-			</li>
-			<% end %>
-		</ul>
-	</div>
-<% end %>
-
-<%= form_for(@event) do |f| %>
-<div>
-	<%= f.label :title %>
-	<%=  f.text_field :title %>
-</div>
-<div>
-	<%= f.label :description %>
-	<%=  f.text_area :description %>
-</div>
-<div>
-	<%= f.label :start_time %>
-	<%=  f.datetime_select :start_time %>
-</div>
-<div>
-	<%= f.label :end_time %>
-	<%=  f.datetime_select :end_time %>
-</div>
-<div>
-	<%= f.label :venue %>
-	<%=  f.text_field :venue %>
-</div>
-<div>
-	<%= f.label :location %>
-	<%=  f.text_field :location %>
-</div>
-<%= f.submit %>
-<% end %>
+<%= render "form", event: @event %>
