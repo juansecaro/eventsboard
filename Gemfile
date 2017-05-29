@@ -35,7 +35,7 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-
+gem 'simple_form', '~> 3.5'
 gem 'better_errors', '~> 2.1', '>= 2.1.1'
 gem 'awesome_print', '~> 1.7', :require => 'ap'
 gem 'binding_of_caller'
