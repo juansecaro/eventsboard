@@ -29,7 +29,7 @@
 .sidebar .organizer,
 .sidebar .tags,
 .sidebar .attendees,
- /*.sidebar.likes,*/
+.sidebar.likes,
  #like, #dislike,
 .comments,
 .event-end {
@@ -82,13 +82,13 @@
   }
 }
 
-// .sidebar .likes {
-//   font-size: 24px;
+ .sidebar .likes {
+   font-size: 24px;
 
-//   &:before {
-//     @extend .fa-heart;
-//   }
-// }
+   &:before {
+     @extend .fa-heart;
+   }
+ }
 
 #like {
   font-size: 24px;
@@ -192,7 +192,7 @@ h1#show-title,
   margin-top: 20px;
   margin-bottom: 15px;
   padding-bottom: 8px;
-  border-bottom: 1px solid #e6e6e6; 
+  border-bottom: 1px solid #e6e6e6;
 }
 
 .search h4 {
@@ -204,13 +204,13 @@ h1#show-title,
   color: #2d2d2d;
 }
 
-// .nav > li > a:hover, 
+// .nav > li > a:hover,
 // .nav > li > a:focus {
 //   background: #e0336b;
 // }
 
-.nav-pills > li.active > a, 
-.nav-pills > li.active > a:hover, 
+.nav-pills > li.active > a,
+.nav-pills > li.active > a:hover,
 .nav-pills > li.active > a:focus {
    background: #e0336b;
    font-weight: bold;
