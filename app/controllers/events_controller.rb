@@ -26,9 +26,9 @@ before_action :set_event, only: [:show, :edit, :update, :destroy]
 	end
 	def update
 
-
 		if @event.update(event_params)
-			flash.now[:notice] = "Updated!"
+			flash[:notice] = "Updated!"
+			redirect_to @event
 		else
 			flash.now[:alert] = "Not updated!"
 			render "edit"
