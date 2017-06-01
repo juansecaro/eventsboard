@@ -42,6 +42,15 @@ gem 'binding_of_caller'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 gem "font-awesome-rails"
 gem 'devise', '~> 4.3'
+gem 'pundit', '~> 1.1'
+gem 'friendly_id', '~> 5.2', '>= 5.2.1'
+gem 'carrierwave', '~> 1.1'
+gem 'fog', '~> 1.40' # Cloud deployment
+gem 'mini_magick', '~> 4.7' #carrierwave dependent
+gem 'searchkick', '~> 2.3' #Search
+gem 'will_paginate', '~> 3.1', '>= 3.1.5'
+gem 'bootstrap-will_paginate', '~> 1.0'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
