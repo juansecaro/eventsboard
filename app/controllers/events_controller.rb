@@ -1,19 +1,22 @@
 class EventsController < ApplicationController
 before_action :set_event, only: [:show, :edit, :update, :destroy]
 before_action :authenticate_user!, except: [:index, :show]
-before_action :authorize_owner!, only: [:edit, :update, :destroy]
+# before_action :authorize_owner!, only: [:edit, :update, :destroy]
 
 	def show
-
+		authorize @event, :show?
 	end
 	def index
 		@events = Event.order(created_at: :desc)
+		authorize @events, :index?
 	end
 	def new
 		@event = Event.new
+		authorize @event, :new?
 	end
 	def create
 		@event = Event.new(event_params)
+		authorize @event, :create?
 		@event.organizer = current_user
 
 
@@ -27,11 +30,12 @@ before_action :authorize_owner!, only: [:edit, :update, :destroy]
 	end
 
 	def edit
-
+		authorize @event, :edit?
 	end
 	def update
 
 		if @event.update(event_params)
+			authorize @event, :update?
 			flash[:notice] = "Updated!"
 			redirect_to @event
 		else
@@ -41,7 +45,7 @@ before_action :authorize_owner!, only: [:edit, :update, :destroy]
 
 	end
 	def destroy
-
+		authorize @event, :destroy?
 		@event.destroy
 		flash.alert = " Deleted"
 		redirect_to events_url
@@ -61,14 +65,14 @@ before_action :authorize_owner!, only: [:edit, :update, :destroy]
 		flash.alert = "The page does not exist"
 		redirect_to events_path
 	end
-	def authorize_owner!
-		authenticate_user!
-
-		unless @event.organizer == current_user
-			flash[:alert] = "You do not have enough permission to '#{action_name}', the '#{@event.title.upcase}' event"
-			redirect_to events_path
-
-		end
-	end
+	# def authorize_owner!
+	# 	authenticate_user!
+	#
+	# 	unless @event.organizer == current_user
+	# 		flash[:alert] = "You do not have enough permission to '#{action_name}', the '#{@event.title.upcase}' event"
+	# 		redirect_to events_path
+	#
+	# 	end
+	# end
 
 end
