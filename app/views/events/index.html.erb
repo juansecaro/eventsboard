@@ -4,7 +4,7 @@
 	<h1>All events</h1>
 	<ul class="actions">
 		<li>
-			<%= link_to "New Event", new_event_path, class: "new" %>
+			<%= link_to "New Event", new_event_path, class: "new" if policy(Event).new? %>
 		</li>
 	</ul>
 </header>
