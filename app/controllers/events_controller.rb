@@ -4,19 +4,19 @@ before_action :authenticate_user!, except: [:index, :show]
 # before_action :authorize_owner!, only: [:edit, :update, :destroy]
 
 	def show
-		authorize @event, :show?
+		#authorize @event, :show?
 	end
 	def index
 		@events = Event.order(created_at: :desc)
-		authorize @events, :index?
+		#authorize @events, :index?
 	end
 	def new
 		@event = Event.new
-		authorize @event, :new?
+		#authorize @event, :new?
 	end
 	def create
 		@event = Event.new(event_params)
-		authorize @event, :create?
+		#authorize @event, :create?
 		@event.organizer = current_user
 
 
@@ -30,12 +30,12 @@ before_action :authenticate_user!, except: [:index, :show]
 	end
 
 	def edit
-		authorize @event, :edit?
+		#authorize @event, :edit?
 	end
 	def update
 
 		if @event.update(event_params)
-			authorize @event, :update?
+			#authorize @event, :update?
 			flash[:notice] = "Updated!"
 			redirect_to @event
 		else
@@ -45,7 +45,7 @@ before_action :authenticate_user!, except: [:index, :show]
 
 	end
 	def destroy
-		authorize @event, :destroy?
+		#authorize @event, :destroy?
 		@event.destroy
 		flash.alert = " Deleted"
 		redirect_to events_url

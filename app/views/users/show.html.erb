@@ -1,5 +1,8 @@
 <header>
-  <h1> <%= @user.organization_name %>'s event organized </h1>
+  <h1> <%= @user %>'s event organized </h1>
+  <p>
+    <%= @user %> works at <strong><%= @user.organization_name %></strong>
+  </p>
   <ul class="actions">
     <li>
       <%= link_to "Start Event", new_event_path, class: "new" %>
@@ -23,7 +26,8 @@
         <td><%= link_to event.title, event_path(event) %>  </td>
         <td><%= time_format(event.start_time) %>  </td>
         <td><%= time_format(event.end_time) %>  </td>
-        
+        <td><%= event_status(event) %>  </td>
+
         <td>
           <%= link_to "Edit", edit_event_path(event), class: "edit" %>
           <%= link_to "Delete", event_path(event), method: :delete, data: {confirm: "Are you sure"}, class: "delete" %>
