@@ -17,12 +17,13 @@
       <ul class="nav navbar-nav">
         <li class="<%= "active" if current_page?("/") %>"><%= link_to "Home", root_path %></li>
         <li class="<%= "active" if current_page?("/events") %>"><%= link_to "Events", events_path %></li>
+        <% admins_only do %>
+          <li class="<%= "active" if current_page?("/admin") %>"><%= link_to "Admin", admin_root_path %> </li>
+        <% end %>
         <% unless user_signed_in? %>
           <li class="<%= "active" if current_page?("/users/sign_up") %>"> <%= link_to "Sign up", new_user_registration_path %> </li>
           <li class="<%= "active" if current_page?("/users/sign_in") %>"> <%= link_to "Sign in", new_user_session_path %> </li>
         <%  end %>
-
-
 
       </ul>
       <form class="navbar-form navbar-left">
@@ -33,7 +34,10 @@
       </form>
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
-          <li class="<%= "active" if current_page?("/users/edit") %>"><%= link_to current_user.username, edit_user_registration_path %></li>
+          <li class="<%= "active" if current_page?("/users/edit") %>"> <%= link_to edit_user_registration_path do %>
+              <span>image</span> <%=current_user.username%>
+            <% end %>
+          </li>
           <li class="<%= "active" if current_page?("/users/#{current_user.username}") %>"> <%= link_to "My events", user_path(current_user) %> </li>
           <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
         <% end %>
