@@ -1,10 +1,10 @@
 <% provide(:title, @category.name) %>
+
 <header>
   <h1 class="text-uppercase"><%= @category.name %> <small>events</small></h1>
   <ul class="actions">
-    <% admins_only %>
-      <li><%= link_to "Edit Category", edit_admin_category_path, class: "edit" %></li>
-      <li><%= link_to "Delete Category", admin_category_path(@category), method: :delete, data: {confirm: "Are you sure?"},class:"delete" %></li>
+    <% @categories.each do |category| %>
+      <li class="<%= "active" if current_page?("/categories/#{category.id}") %> text-uppercase"> <%= link_to category.name, category_path(category) %></li>
     <% end %>
   </ul>
 </header>
@@ -25,8 +25,6 @@
 		</div>
 	</div>
 
-  <div class="col-sm-9">
-  			<h3>Discover and register to attend your favorite events right here</h3>
-  </div>
+  <div class="col-sm-9"> <h3>Discover and register to attend your favorite events right here</h3>  </div>
 
 </div>
