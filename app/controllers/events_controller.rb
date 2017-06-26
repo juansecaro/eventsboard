@@ -8,7 +8,9 @@ before_action :authorize_owner!, only: [:edit, :update, :destroy]
 	end
 	def index
 		@events = Event.order(created_at: :desc)
+		@categories = Category.order(:name)
 		authorize @events, :index?
+
 	end
 	def new
 		@event = Event.new
