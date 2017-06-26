@@ -11,6 +11,8 @@
 	<%= f.input :end_time, as: :datetime, start_year: Date.today.year, ampm: true, order: [:day, :month, :year] %>
 	<%= f.input :venue %>
 	<%= f.input :location %>
+	<%= f.input :image, as: :file, label: "Upload event image" %>
+
 
 	<%= f.button :submit, class: "btn btn-primary" %>
 <% end %>
