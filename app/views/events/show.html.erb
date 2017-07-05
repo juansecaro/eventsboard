@@ -12,7 +12,7 @@
 
 <div class="row">
 	<div class="col-sm-9">
-		<%= image_tag @event.image.url, class:"event-image" if @event.image %>
+		<%= image_tag @event.image.url, class:"event-image" unless @event.image.blank? %>
 		<div class="event-meta">
 			<h4><span class="event-start"><strong>Starts: </strong><%= time_format(@event.start_time) %></span></h4>
 			<p>

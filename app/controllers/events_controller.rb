@@ -60,7 +60,7 @@ before_action :authorize_owner!, only: [:edit, :update, :destroy]
 	  params.require(:event).permit(:title, :description, :start_time, :end_time, :location, :venue, :image)
 	end
 	def set_event
-		@event = Event.find(params[:id])
+		@event = Event.friendly.find(params[:id])
 
 	rescue ActiveRecord::RecordNotFound
 		flash.alert = "The page does not exist"
