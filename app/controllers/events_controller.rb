@@ -61,7 +61,7 @@ before_action :authorize_owner!, only: [:edit, :update, :destroy]
 
 	private
 	def event_params
-	  params.require(:event).permit(:title, :description, :start_time, :end_time, :location, :venue, :image)
+	  params.require(:event).permit(:title, :description, :start_time, :end_time, :location, :venue, :image, :category_id)
 	end
 	def set_event
 		@event = Event.friendly.find(params[:id])
