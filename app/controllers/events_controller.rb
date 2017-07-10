@@ -5,6 +5,8 @@ before_action :authorize_owner!, only: [:edit, :update, :destroy]
 
 	def show
 		authorize @event, :show?
+		@comment = Comment.new
+		@comment.event_id = @event.id
 	end
 	def index
 		if params[:query].present?
