@@ -14,5 +14,6 @@ root 'events#index'
 
   resources :events do
     resources :comments, only: [:create]
+    resources :attendances, only: [:create]
   end
 end
