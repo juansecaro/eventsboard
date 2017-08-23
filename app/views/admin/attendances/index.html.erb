@@ -1,0 +1,22 @@
+<header>
+  <h1>All Attendance</h1>
+</header>
+<table class="table table-striped table-responsive">
+  <thead>
+    <tr>
+      <th>Attendee</th>
+      <th>Event</th>
+      <th>Seats left</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @attendances.each do |attendance| %>
+    <tr>
+      <td><%= attendance.attendee.full_name %></td>
+      <td><%= attendance.attended_event.title %></td>
+      <td><%= attendance.attended_event.seats_left %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
