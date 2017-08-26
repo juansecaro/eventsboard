@@ -3,7 +3,7 @@ class CategoriesController < ApplicationController
     skip_after_action :verify_authorized
   def show
     @categories = Category.order(:name)
-    @category_events = @category.events.order(created_at: :desc)
+    @category_events = @category.events.order(created_at: :desc).paginate(page: params[:page], per_page: 4)
   end
 
   private

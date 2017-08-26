@@ -12,7 +12,7 @@ before_action :authorize_owner!, only: [:edit, :update, :destroy]
 		if params[:query].present?
 			@events = Event.search(params[:query])
 		else
-			@events = Event.order(created_at: :desc)
+			@events = Event.order(created_at: :desc).paginate(page: params[:page], per_page: 5)
 		end
 		@categories = Category.order(:name)
 		authorize @events, :index?
