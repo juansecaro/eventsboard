@@ -7,6 +7,7 @@ class Event < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :attendances, dependent: :destroy
   has_many :attendees, through: :attendances
+  has_many :likes, dependent: :destroy
   validates :title, presence: true, length: {minimum: 5}
   validates :venue, presence:true
   validates :location, presence:true
@@ -18,5 +19,11 @@ class Event < ApplicationRecord
   end
   def seats_left?
     seats == attendees.count
+  end
+  def likes_total
+    self.likes.where(like: "like").count
+  end
+  def dislikes_total
+    self.likes.where(like: "dislike").count
   end
 end

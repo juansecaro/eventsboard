@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 root 'events#index'
 
   resources :events do
+    resources :likes, only: [:create]
     resources :comments, only: [:create]
     resources :attendances, only: [:create]
   end

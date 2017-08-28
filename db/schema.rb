@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170714144555) do
+ActiveRecord::Schema.define(version: 20170828165446) do
 
   create_table "attendances", force: :cascade do |t|
     t.integer  "event_id"
@@ -69,6 +69,16 @@ ActiveRecord::Schema.define(version: 20170714144555) do
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
     t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.integer  "event_id"
+    t.integer  "user_id"
+    t.string   "like"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_likes_on_event_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
