@@ -13,6 +13,8 @@
 	<%= f.input :location %>
 	<%= f.input :category_id, collection: Category.all, label: "Select Category", prompt: true %>
 	<%= f.input :seats, label: "Capacity", hint: "number of atendees" %>
+	<%= f.input :tag_list, label: "Tags", hint: "Please enter comma-separated words" %>
+
 	<%= f.input :image, as: :file, label: "Upload event image" %>
 
 
